@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Top Works</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
+          rel="stylesheet">
+</head>
+
+<body class="about-page top-works-page">
+
+    <!-- Decorative yellow folder -->
+    <img class="side-menu-folder"
+         src="CSS Images/menu yellow folder.webp"
+         alt="">
+
+    <!-- Home paperclip -->
+    <a href="index.html" class="menu-paperclip">
+        <img src="CSS Images/menu paperclip.webp"
+             alt="Back to homepage">
+    </a>
+
+    <!-- Heading and project cards -->
+    <main class="readings-content">
+        <h1>Top Works</h1>
+
+        <div class="reading-cards">
+
+            <button type="button" class="reading-card"
+                    onclick="document.getElementById('work1').showModal()">
+                <img src="CSS Images/p1.png"
+                    alt="View Torii Gate project">
+            </button>
+
+            <button type="button" class="reading-card"
+                    onclick="document.getElementById('work2').showModal()">
+                <img src="CSS Images/p2.png"
+                     alt="View illustrated eye project">
+            </button>
+
+        </div>
+    </main>
+
+    <!-- Torii Gate popup -->
+    <dialog id="work1"
+            class="project-image-popup"
+            aria-label="Torii Gate project"
+            onclick="if (event.target === this) closeProjectPopup(this)">
+
+        <img src="CSS Images/popup p1.png"
+            alt="Torii Gate original photograph and illustrated version">
+
+        <button type="button"
+            class="popup-arrow popup-next"
+            aria-label="Next project"
+            onclick="event.stopPropagation(); switchProject('work1', 'work2')">
+        <img src="CSS Images/right.webp" alt="">
+        </button>
+
+    </dialog>
+
+    <!-- Illustrated Eye popup -->
+    <dialog id="work2"
+            class="project-image-popup"
+            aria-label="Animated Eye project"
+            onclick="if (event.target === this) closeProjectPopup(this)">
+
+        <div class="eye-popup-layout">
+            <img class="eye-popup-background"
+                src="CSS Images/popup p2.png"
+                alt="Animated Eye project, created in Illustrator and Photoshop">
+
+            <img class="eye-popup-gif"
+                src="eye-blink.gif"
+                alt="Animated blinking eye">
+        </div>
+
+        <button type="button"
+            class="popup-arrow popup-prev"
+            aria-label="Previous project"
+            onclick="event.stopPropagation(); switchProject('work2', 'work1')">
+        <img src="CSS Images/left.webp" alt="">
+        </button>
+
+    </dialog>
+
+    <!-- Right-side navigation -->
+    <nav class="right-menu" aria-label="Portfolio navigation">
+
+        <a href="About me.html" class="right-menu-about">
+            <img src="CSS Images/menu about me.webp"
+                 alt="More about me">
+        </a>
+
+        <a href="All Projects.html" class="right-menu-projects">
+            <img src="CSS Images/menu all projects.webp"
+                 alt="View all projects">
+        </a>
+
+        <a href="Statement.html" class="right-menu-ticket">
+            <img src="CSS Images/menu cs.webp"
+                 alt="Read my creative statement">
+        </a>
+
+    </nav>
+
+    <script>
+
+        function switchProject(currentId, nextId) {
+    const current = document.getElementById(currentId);
+    const next = document.getElementById(nextId);
+
+    if (current.classList.contains("closing")) return;
+
+    current.close();
+    next.showModal();
+}
+        function closeProjectPopup(popup) {
+            if (!popup.open || popup.classList.contains("closing")) {
+                return;
+            }
+
+            const reducedMotion = window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            ).matches;
+
+            if (reducedMotion) {
+                popup.close();
+                return;
+            }
+
+            let fallbackTimer;
+
+            function finish(event) {
+                if (
+                    event &&
+                    (
+                        event.target !== popup ||
+                        event.pseudoElement ||
+                        event.animationName !== "project-image-out"
+                    )
+                ) {
+                    return;
+                }
+
+                clearTimeout(fallbackTimer);
+                popup.removeEventListener("animationend", finish);
+                popup.close();
+                popup.classList.remove("closing");
+            }
+
+            popup.addEventListener("animationend", finish);
+            popup.classList.add("closing");
+
+            // Close even if the animation is interrupted.
+            fallbackTimer = setTimeout(finish, 400);
+        }
+
+        document.querySelectorAll(".project-image-popup").forEach(popup => {
+            popup.addEventListener("cancel", event => {
+                event.preventDefault();
+                closeProjectPopup(popup);
+            });
+        });
+    </script>
+
+</body>
+</html>

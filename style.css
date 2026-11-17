@@ -1,0 +1,1195 @@
+body {
+    margin: 0;
+    height: 100vh;
+    height: 100dvh;
+    background-color: #f3efdf;
+}
+
+.home-name {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    margin: 0;
+    z-index: 2;
+
+    font-family: "Poppins", sans-serif;
+    font-size: clamp(50px, 9vw, 180px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    text-align: center;
+    color: #f3efdf;
+}
+
+/* Folder starts below the empty top space */
+.home-folder {
+    position: fixed;
+    top: 12vh;
+    top: 12dvh;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+}
+
+/* Folder fills the remaining screen height */
+.home-folder-background {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    pointer-events: none;
+}
+
+/* Shared paperclip appearance */
+.home-paperclip {
+    display: block;
+    transform-origin: top center;
+    transition: transform 0.2s;
+    pointer-events: auto;
+}
+
+.home-paperclip img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.home-paperclip:hover,
+.home-paperclip:focus-visible {
+    transform: translateY(-3px);
+}
+
+.home-folder .home-paperclip {
+    position: absolute;
+    top: 14%;
+    left: 9%;
+    width: 15%;
+    z-index: 3;
+    pointer-events: auto;
+    transform: translateY(-59%);
+    transition: transform 0.2s;
+}
+
+.home-folder .home-paperclip:hover,
+.home-folder .home-paperclip:focus-visible {
+    transform: translateY(calc(-59% - 3px));
+}
+
+.projects-folder {
+    position: fixed;
+    bottom: -100px;
+    left: 0;
+    width: 100%;
+    transition: transform 0.3s;
+}
+
+.projects-folder img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.projects-folder:hover,
+.projects-folder:focus-visible {
+    transform: translateY(-20px);
+}
+
+.readings-note {
+    position: absolute;
+    top: 10%;
+    right: -118px;
+    width: 35%;
+    rotate: -3deg;
+    z-index: 2;
+    transition: transform 0.3s;
+}
+
+.readings-note img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.readings-note:hover,
+.readings-note:focus-visible {
+    transform: translate(-10px, -5px);
+}
+
+.about-note {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    width: 20%;
+    z-index: 2;
+    transition: transform 0.3s;
+    transform-origin: top center;
+}
+
+.about-note img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.about-note:hover,
+.about-note:focus-visible {
+    animation: wiggle 1.2s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-2deg);
+    }
+
+    75% {
+        transform: rotate(2deg);
+    }
+}
+
+.about-page .home-paperclip {
+    position: absolute;
+    top: 8.25%;
+    left: 9%;
+    width: 15%;
+    z-index: 10;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.about-right {
+    pointer-events: none;
+}
+
+.about-right .about-photos {
+    pointer-events: auto;
+}
+
+/* About Me paperclip */
+.about-page .menu-paperclip {
+position: absolute;
+    top: calc(
+        var(--folder-top) +
+        (100% - var(--folder-top)) * 0.09
+    );
+    left: 9%;
+    width: 18%;
+    display: block;
+    z-index: 10;
+    pointer-events: auto;
+    cursor: pointer;
+    transform: translateY(-59%);
+    transition: transform 0.2s;}
+
+/* Match the working Reading Responses background */
+body.about-page {
+    --folder-top: 12vh;
+
+    background-position: center var(--folder-top);
+    background-size: 100% calc(100% - var(--folder-top));
+}
+
+/* Align the updated paperclip with that background */
+body.about-page .menu-paperclip {
+    position: absolute;
+    top: calc(
+        var(--folder-top) +
+        (100% - var(--folder-top)) * 0.09
+    );
+    left: 9%;
+    width: 18%;
+    display: block;
+    z-index: 10;
+    pointer-events: auto;
+    cursor: pointer;
+    transform: translateY(-59%);
+    transition: transform 0.2s;
+    outline: none;
+}
+
+body.about-page .menu-paperclip img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+body.about-page .menu-paperclip:hover,
+body.about-page .menu-paperclip:focus-visible {
+    transform: translateY(calc(-59% - 3px));
+}
+
+.statement-ticket {
+    position: fixed;
+    left: 3%;
+    bottom: 20%;
+    width: 22%;
+    z-index: 3;
+    transition: transform 0.3s;
+    transform-origin: bottom center;
+}
+
+.statement-ticket img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.statement-ticket:hover,
+.statement-ticket:focus-visible {
+    animation: wiggle 1.2s ease-in-out infinite;
+}
+
+/* ==================== ALL PROJECTS ==================== */
+/* Center the panel and paperclip vertically */
+/* Available space for the left group */
+.projects-page .projects-top-group {
+    position: fixed;
+    top: 8%;
+    left: 5%;
+    width: 45%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    overflow: visible;
+}
+
+/* Wrapper matches the actual image size */
+.projects-page .projects-panel {
+    position: relative;
+    width: max-content;
+    max-width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+.projects-page .projects-panel .top-works {
+    position: relative;
+    inset: auto;
+    display: block;
+    width: auto;
+    height: auto;
+    z-index: 2;
+}
+
+/* Fit within both the window width and height */
+.projects-page .projects-panel .top-works img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 35vw;
+    max-height: 70vh;
+    max-height: 70dvh;
+    object-fit: contain;
+}
+
+.projects-page .projects-panel .top-works img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.projects-page .projects-panel .top-works {
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.projects-page .projects-panel .top-works:hover,
+.projects-page .projects-panel .top-works:focus-visible {
+    transform: scale(1.05);
+}
+
+.top-works-page .reading-cards {
+    column-gap: 0;
+    row-gap: 80px;
+}
+
+.top-works-page .reading-cards .reading-card {
+    width: 190%;
+    max-width: none;
+    justify-self: center;
+}
+
+/* Upper image: move right */
+.top-works-page .reading-cards .reading-card:nth-child(1) {
+    left: 60px;
+}
+
+/* Bottom image: move left and down */
+.top-works-page .reading-cards .reading-card:nth-child(2) {
+    width: 200%;
+    left: -100px;
+    margin-top: clamp(150px, 24vw, 400px);
+}
+
+.top-works-page .reading-cards .reading-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.top-works-page .readings-content h1 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+}
+
+/* Paperclip anchored to the panel */
+.projects-page .projects-panel .menu-paperclip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: auto;
+    display: block;
+    z-index: 3;
+    pointer-events: auto;
+    cursor: pointer;
+    transform: translateY(-59%);
+    transition: transform 0.2s;
+}
+
+.projects-page .projects-panel .menu-paperclip img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.projects-page .projects-panel .menu-paperclip:hover,
+.projects-page .projects-panel .menu-paperclip:focus-visible {
+    transform: translateY(calc(-59% - 3px));
+}
+
+/* Other Projects panel */
+.projects-page .other-projects {
+    position: fixed;
+    top: 17%;
+    right: 11.5%;
+    width: 35%;
+    height: 72%;
+    display: block;
+    z-index: 2;
+    transition: transform 0.3s;
+}
+
+.projects-page .other-projects img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.projects-page .other-projects:hover,
+.projects-page .other-projects:focus-visible {
+    transform: scale(1.05);
+}
+
+/* Decorative folder behind both panels */
+.projects-page .projects-yellow-folder {
+    position: fixed;
+    top: 8%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    object-fit: fill;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.other-projects-content {
+    padding-top: 43vh;
+}
+
+.other-projects-content h1 {
+    font-family: "Poppins", sans-serif;
+    font-size: 6vw;
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: #f3efdf;
+    margin: 0 0 30px;
+}
+
+.other-project-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 15px;
+    row-gap: 25px;
+    margin-top: 40px;
+    align-items: start;
+}
+
+.other-project-card {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.other-project-cards {
+    margin-top: -20px;
+}
+
+.other-project-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.other-project-cards .other-project-card {
+    width: 100%;
+    max-width: none;
+    justify-self: center;
+}
+
+.other-works-page .other-projects-content {
+    position: relative;
+    z-index: 2;
+}
+
+.other-project-cards .other-project-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.other-project-card:hover,
+.other-project-card:focus-visible {
+    transform: scale(1.03);
+}
+
+/* ==================== TOP WORKS POP-UP ==================== */
+/* Top Works heading */
+.top-works-page .readings-content h1 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+}
+
+/* Popup container */
+.project-image-popup {
+    width: fit-content;
+    max-width: 96vw;
+    max-height: 94vh;
+    max-height: 94dvh;
+    margin: auto;
+    padding: 0;
+    border: none;
+    background: transparent;
+    overflow: auto;
+    transform-origin: center;
+    cursor: default;
+    overflow: visible;
+}
+
+/* Preserve the complete popup image */
+.project-image-popup img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 96vw;
+    max-height: 94vh;
+    max-height: 94dvh;
+    object-fit: contain;
+    cursor: default;
+}
+
+/* Click outside the image to close */
+.project-image-popup::backdrop {
+    background: rgba(70, 30, 25, 0.65);
+    cursor: pointer;
+}
+
+/* Opening animation */
+.project-image-popup[open] {
+    animation: project-image-in 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Closing animation */
+.project-image-popup[open].closing {
+    animation: project-image-out 0.3s ease-in forwards;
+}
+
+.project-image-popup[open].closing::backdrop {
+    animation: popup-backdrop-out 0.3s ease-in forwards;
+}
+
+@keyframes project-image-in {
+    from {
+        opacity: 0;
+        transform: scale(0.94);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes project-image-out {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0.94);
+    }
+}
+
+@keyframes popup-backdrop-out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .project-image-popup[open],
+    .project-image-popup[open].closing,
+    .project-image-popup[open].closing::backdrop {
+        animation: none;
+    }
+}
+
+.eye-popup-layout {
+    position: relative;
+    width: fit-content;
+    margin: auto;
+}
+
+/* Full folder design */
+.project-image-popup .eye-popup-background {
+    display: block;
+    max-width: 96vw;
+    max-height: 94dvh;
+    width: auto;
+    height: auto;
+}
+
+/* GIF over the large eye */
+.project-image-popup .eye-popup-gif {
+    position: absolute;
+    left: 50%;
+    top: 18%;
+    width: 46%;
+    height: 39%;
+    max-width: none;
+    max-height: none;
+    object-fit: fill;
+    rotate: 3deg;
+    pointer-events: none;
+}
+
+/* Arrow buttons */
+.project-image-popup .popup-arrow {
+    position: absolute;
+    top: 50%;
+    transform-origin: center;
+    transform: translateY(-50%);
+    width: clamp(45px, 8vw, 140px);
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 5;
+    transition: transform 0.25s ease;
+}
+
+.project-image-popup .popup-prev {
+    left: -50px;
+}
+
+.project-image-popup .popup-next {
+    right: -50px;
+}
+
+.project-image-popup .popup-arrow img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: none;
+    max-height: none;
+    cursor: pointer;
+}
+
+.project-image-popup .popup-arrow:hover {
+    transform: translateY(-50%) scale(1.08);
+}
+
+.project-image-popup .popup-arrow:focus-visible {
+    outline: 2px solid #f3efdf;
+    outline-offset: 4px;
+}
+
+/* ==================== ABOUT ME PAGE ==================== */
+body.about-page {
+    position: relative;
+    margin: 0;
+    height: auto;
+    min-height: 150vh;
+    overflow-y: auto;
+
+    background-color: #f3efdf;
+    background-image: url("CSS Images/full red folder.webp");
+    background-position: center 12vh;
+    background-size: 100% calc(100% - 8vh);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+}
+
+.about-page .home-paperclip {
+    top: 8.25%;
+    left: 9%;
+    width: 15%;
+}
+
+/* Decorations scroll with the page */
+.about-page .home-paperclip,
+.about-page .statement-ticket {
+    position: absolute;
+}
+
+/* About Me paperclip */
+.about-page .menu-paperclip {
+    position: absolute;
+    top: 8.25%;
+    left: 9%;
+    width: 18%;
+    display: block;
+    z-index: 10;
+    transform: none;
+    pointer-events: auto;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.about-page .menu-paperclip img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.about-page .menu-paperclip:hover,
+.about-page .menu-paperclip:focus-visible {
+    transform: translateY(-3px);
+}
+
+/* About Me text */
+.about-intro {
+    position: relative;
+    width: 50%;
+    margin-left: 6%;
+    padding-top: 35vh;
+    padding-bottom: 80px;
+    color: #f3efdf;
+}
+
+.about-intro h1 {
+    font-family: "Poppins", sans-serif;
+    font-size: 6vw;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin: 0 0 30px;
+}
+
+.about-intro p {
+    font-family: "Fira Code", monospace;
+    font-size: 20px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+/* ==================== ABOUT ME: RIGHT SIDE ==================== */
+
+.about-right {
+    position: absolute;
+    top: 8vh;
+    right: 0;
+    width: 52%;
+    aspect-ratio: 1 / 1.05;
+}
+
+/* Yellow folder on the right */
+.side-menu-folder {
+    position: absolute;
+    top: 18vh;
+    right: 0;
+    width: 45%;
+    height: auto;
+    display: block;
+    z-index: 1;
+    pointer-events: none;
+}
+
+html {
+    overflow-x: clip;
+}
+
+body.about-page {
+    position: relative;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 150vh;
+    overflow-x: clip;
+    overflow-y: auto;
+
+    --folder-top: 12vh;
+
+    background-color: #f3efdf;
+    background-image: url("CSS Images/full red folder.webp");
+    background-position: right var(--folder-top);
+    background-size: 100% calc(100% - var(--folder-top));
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+}
+
+/* Clickable photo strip */
+.about-right .about-photos {
+    position: absolute;
+    top: 40%;
+    left: 8%;
+    width: 50%;
+    z-index: 2;
+    transition: transform 0.3s;
+}
+
+.about-right .about-photos img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.about-right .about-photos:hover,
+.about-right .about-photos:focus-visible {
+    transform: scale(1.03);
+}
+
+/* Decorative stickers */
+.about-right .about-stickers {
+    position: absolute;
+    top: 40%;
+    right: 0;
+    width: 50%;
+    height: auto;
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Reading card buttons */
+.reading-cards .reading-card {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.reading-cards .reading-card:hover,
+.reading-cards .reading-card:focus-visible {
+    transform: scale(1.03);
+}
+
+/* Popup */
+.readings-page .menu-paperclip {
+    position: absolute;
+    top: 8.25%;
+    left: 9%;
+    width: 18%;
+    display: block;
+    z-index: 10;
+    pointer-events: auto;
+    cursor: pointer;
+    transform: translateY(-15px);
+    transition: transform 0.2s;
+}
+
+/* Keep the background and clip on the same coordinate system */
+body.readings-page {
+    --folder-top: 12vh;
+
+    background-position: center var(--folder-top);
+    background-size: 100% calc(100% - var(--folder-top));
+}
+
+/* Anchor the clip's cut ends to the red edge */
+.readings-page .menu-paperclip {
+    position: absolute;
+    top: calc(
+        var(--folder-top) +
+        (100% - var(--folder-top)) * 0.09
+    );
+    left: 9%;
+    width: 18%;
+    display: block;
+    z-index: 10;
+    pointer-events: auto;
+    cursor: pointer;
+    transform: translateY(-59%);
+    transition: transform 0.2s;
+}
+
+.readings-page .menu-paperclip img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.readings-page .menu-paperclip:hover,
+.readings-page .menu-paperclip:focus-visible {
+    transform: translateY(calc(-59% - 3px));
+}
+
+/* ==================== READING RESPONSES PAGE ==================== */
+
+body.readings-page {
+    position: relative;
+    margin: 0;
+    height: auto;
+    min-height: 150vh;
+
+    background-color: #f3efdf;
+    background-image: url("CSS Images/full red folder.webp");
+    background-position: center 12vh;
+    background-size: 100% calc(100% - 12vh);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+}
+
+.readings-page .home-paperclip {
+    position: absolute;
+    top: 8.25%;
+    left: 9%;
+    width: 15%;
+    z-index: 3;
+}
+
+/* Heading and card area */
+.readings-content {
+    position: relative;
+    width: 55%;
+    margin-left: 5%;
+    padding-top: 35vh;
+    padding-bottom: 80px;
+}
+
+.readings-content h1 {
+    font-family: Arial, sans-serif;
+    font-size: 6vw;
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: #f3efdf;
+    margin: 0 0 30px;
+}
+
+/* Two notes per row */
+.reading-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 20px;
+    row-gap: 15px;
+    align-items: start;
+}
+
+/* Note size and appearance */
+.reading-cards a,
+.reading-cards .reading-card {
+    position: relative;
+    left: -15px;
+    display: block;
+    width: 85%;
+    justify-self: center;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.reading-cards img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Hover zoom */
+.reading-cards a:hover,
+.reading-cards a:focus-visible,
+.reading-cards .reading-card:hover,
+.reading-cards .reading-card:focus-visible {
+    transform: scale(1.03);
+}
+
+/* ==================== READING POPUPS ==================== */
+
+.reading-popup {
+    box-sizing: border-box;
+    width: min(1000px, 94vw);
+    max-width: none;
+    max-height: none;
+    margin: auto;
+    padding: 0;
+    border: none;
+    background: transparent;
+    overflow: visible;
+    color: #9e3e40;
+}
+
+/* Faded background */
+.reading-popup::backdrop {
+    background: rgba(150, 65, 60, 0.5);
+}
+
+/* Same paper container size for every response */
+.reading-paper {
+    position: relative;
+    width: 100%;
+    height: 85vh;
+    height: 85dvh;
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Different paper image for each reading popup */
+#reading1 .reading-paper {
+    background-image: url("CSS Images/response1.webp");
+}
+
+#reading2 .reading-paper {
+    background-image: url("CSS Images/response2.webp");
+}
+
+#reading3 .reading-paper {
+    background-image: url("CSS Images/response3.webp");
+}
+
+#reading4 .reading-paper {
+    background-image: url("CSS Images/response4.webp");
+}
+
+/* Scrollable inside the white paper */
+.reading-text {
+    position: absolute;
+    top: 36%;
+    bottom: 15%;
+    left: 18%;
+    right: 4%;
+
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 0 10px 10px 0;
+    box-sizing: border-box;
+}
+
+.reading-text p {
+    font-family: "Courier New", monospace;
+    font-size: 18px;
+    line-height: 1.7;
+    margin: 0 0 25px;
+}
+
+/* Close button */
+.close-reading {
+    position: absolute;
+    right: 1.5%;
+    bottom: 8%;
+    width: 45px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    outline: none;
+    cursor: pointer;
+    z-index: 3;
+    transition: transform 0.2s;
+}
+
+.close-reading img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.close-reading:hover {
+    transform: scale(1.1);
+}
+
+/* Show an outline only for keyboard navigation */
+.close-reading:focus-visible {
+    outline: 2px solid #9e3e40;
+    outline-offset: 4px;
+}
+
+/* Popup entrance */
+.reading-popup[open] {
+    transform-origin: center;
+    animation: reading-pop-in 0.35s ease-out;
+}
+
+@keyframes reading-pop-in {
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Fade in the backdrop */
+.reading-popup[open]::backdrop {
+    animation: reading-backdrop-in 0.35s ease-out;
+}
+
+@keyframes reading-backdrop-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .reading-popup[open],
+    .reading-popup[open]::backdrop {
+        animation: none;
+    }
+}
+
+/* Right-side menu: scrolls with the page */
+.right-menu {
+    position: absolute;
+    top: 8vh;
+    right: 0;
+    width: 50%;
+    aspect-ratio: 1 / 1;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.right-menu a {
+    position: absolute;
+    display: block;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.right-menu a img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Ripped About Me note */
+.right-menu-about {
+    top: 0;
+    left: 0;
+    width: 42%;
+    transform-origin: top center;
+}
+
+.right-menu-about:hover,
+.right-menu-about:focus-visible {
+    animation: wiggle 1.2s ease-in-out infinite;
+}
+
+/* Decorative metal clip */
+.right-menu-clip {
+    position: fixed;
+    top: -2%;
+    left: 38%;
+    width: 21%;
+    height: auto;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* All Projects sticky note */
+.right-menu-projects {
+    top: 22%;
+    right: 21%;
+    width: 50%;
+    transition: transform 0.3s;
+}
+
+.right-menu-projects:hover,
+.right-menu-projects:focus-visible {
+    transform: translate(-6px, -4px);
+}
+
+/* Creative Statement ticket */
+.right-menu-ticket {
+    top: 70%;
+    right: 6%;
+    width: 55%;
+    transform-origin: bottom center;
+}
+
+.right-menu-ticket:hover,
+.right-menu-ticket:focus-visible {
+    animation: wiggle 1.2s ease-in-out infinite;
+}
+
+/* Statement text */
+/* Statement text */
+.statement {
+    position: relative;
+    width: 49%;
+    margin-left: 6%;
+    padding-top: 45vh;
+    padding-bottom: 80px;
+    color: #f3efdf;
+}
+
+.statement .wide-paragraph {
+    width: 88vw;
+}
+
+.statement h1 {
+    font-family: "Poppins", sans-serif;
+    font-size: 6vw;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin: 0 0 30px;
+}
+
+.statement p {
+    font-family: "Fira Code", monospace;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.statement .narrow-paragraph,
+.statement .wide-paragraph {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 25px;
+    overflow-wrap: break-word;
+}

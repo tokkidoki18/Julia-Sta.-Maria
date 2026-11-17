@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Other Projects</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
+          rel="stylesheet">
+</head>
+
+<body class="about-page other-works-page">
+
+    <!-- Decorative folder -->
+    <img class="side-menu-folder"
+         src="CSS Images/menu yellow folder.webp"
+         alt="">
+
+    <!-- Home paperclip -->
+    <a href="index.html" class="menu-paperclip">
+        <img src="CSS Images/menu paperclip.webp"
+             alt="Back to homepage">
+    </a>
+
+    <!-- Heading and clickable projects -->
+    <main class="readings-content other-projects-content">
+        <h1>Other Projects</h1>
+
+        <div class="other-project-cards">
+
+            <button type="button" class="other-project-card"
+                    onclick="document.getElementById('other1').showModal()">
+                <img src="CSS Images/h1.png"
+                     alt="View street sign project">
+            </button>
+
+            <button type="button" class="other-project-card"
+                    onclick="document.getElementById('other2').showModal()">
+                <img src="CSS Images/h2 dof.png"
+                     alt="View depth of field project">
+            </button>
+
+            <button type="button" class="other-project-card"
+                    onclick="document.getElementById('other3').showModal()">
+                <img src="CSS Images/h2.png"
+                     alt="View project 3">
+            </button>
+
+            <button type="button" class="other-project-card"
+                    onclick="document.getElementById('other4').showModal()">
+                <img src="CSS Images/h3.png"
+                     alt="View project 4">
+            </button>
+
+        </div>
+    </main>
+
+    <!-- Project 1 popup: next arrow only -->
+    <dialog id="other1"
+            class="project-image-popup"
+            aria-label="Street sign project"
+            onclick="if (event.target === this) closeProjectPopup(this)">
+
+        <img src="CSS Images/popup h1.png"
+             alt="Street sign project details">
+
+        <button type="button" class="popup-arrow popup-next"
+                aria-label="Next project"
+                onclick="event.stopPropagation(); switchProject('other1', 'other2')">
+            <img src="CSS Images/right.webp" alt="">
+        </button>
+    </dialog>
+
+    <!-- Project 2 popup: previous and next arrows -->
+    <dialog id="other2"
+            class="project-image-popup"
+            aria-label="Depth of field project"
+            onclick="if (event.target === this) closeProjectPopup(this)">
+
+        <img src="CSS Images/popup h2 dof.png"
+             alt="Depth of field project details">
+
+        <button type="button" class="popup-arrow popup-prev"
+                aria-label="Previous project"
+                onclick="event.stopPropagation(); switchProject('other2', 'other1')">
+            <img src="CSS Images/left.webp" alt="">
+        </button>
+
+        <button type="button" class="popup-arrow popup-next"
+                aria-label="Next project"
+                onclick="event.stopPropagation(); switchProject('other2', 'other3')">
+            <img src="CSS Images/right.webp" alt="">
+        </button>
+    </dialog>
+
+    <!-- Project 3 popup: previous and next arrows -->
+    <dialog id="other3"
+            class="project-image-popup"
+            aria-label="Project 3"
+            onclick="if (event.target === this) closeProjectPopup(this)">
+
+        <img src="CSS Images/popup h2.png"
+             alt="Project 3 details">
+
+        <button type="button" class="popup-arrow popup-prev"
+                aria-label="Previous project"
+                onclick="event.stopPropagation(); switchProject('other3', 'other2')">
+            <img src="CSS Images/left.webp" alt="">
+        </button>
+
+        <button type="button" class="popup-arrow popup-next"
+                aria-label="Next project"
+                onclick="event.stopPropagation(); switchProject('other3', 'other4')">
+            <img src="CSS Images/right.webp" alt="">
+        </button>
+    </dialog>
+
+    <!-- Project 4 popup: previous arrow only -->
+    <dialog id="other4"
+            class="project-image-popup"
+            aria-label="Project 4"
+            onclick="if (event.target === this) closeProjectPopup(this)">
+
+        <img src="CSS Images/popup h3.png"
+             alt="Project 4 details">
+
+        <button type="button" class="popup-arrow popup-prev"
+                aria-label="Previous project"
+                onclick="event.stopPropagation(); switchProject('other4', 'other3')">
+            <img src="CSS Images/left.webp" alt="">
+        </button>
+    </dialog>
+
+    <!-- Right-side navigation -->
+    <nav class="right-menu" aria-label="Portfolio navigation">
+
+        <a href="About me.html" class="right-menu-about">
+            <img src="CSS Images/menu about me.webp"
+                 alt="More about me">
+        </a>
+
+        <a href="All Projects.html" class="right-menu-projects">
+            <img src="CSS Images/menu all projects.webp"
+                 alt="View all projects">
+        </a>
+
+        <a href="Statement.html" class="right-menu-ticket">
+            <img src="CSS Images/menu cs.webp"
+                 alt="Read my creative statement">
+        </a>
+
+    </nav>
+
+    <script>
+        // Switch between project popups.
+        function switchProject(currentId, nextId) {
+            const current = document.getElementById(currentId);
+            const next = document.getElementById(nextId);
+
+            if (!current || !next) return;
+            if (current.classList.contains("closing")) return;
+
+            current.close();
+            next.showModal();
+        }
+
+        // Play the closing animation before hiding the popup.
+        function closeProjectPopup(popup) {
+            if (!popup.open || popup.classList.contains("closing")) {
+                return;
+            }
+
+            const reducedMotion = window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            ).matches;
+
+            if (reducedMotion) {
+                popup.close();
+                return;
+            }
+
+            let fallbackTimer;
+
+            function finish(event) {
+                if (
+                    event &&
+                    (
+                        event.target !== popup ||
+                        event.pseudoElement ||
+                        event.animationName !== "project-image-out"
+                    )
+                ) {
+                    return;
+                }
+
+                clearTimeout(fallbackTimer);
+                popup.removeEventListener("animationend", finish);
+                popup.close();
+                popup.classList.remove("closing");
+            }
+
+            popup.addEventListener("animationend", finish);
+            popup.classList.add("closing");
+
+            // Also close if the animation is interrupted.
+            fallbackTimer = setTimeout(finish, 400);
+        }
+
+        // Animate closing when Escape is pressed.
+        document.querySelectorAll(".project-image-popup").forEach(popup => {
+            popup.addEventListener("cancel", event => {
+                event.preventDefault();
+                closeProjectPopup(popup);
+            });
+        });
+    </script>
+
+</body>
+</html>
