@@ -644,7 +644,7 @@ body.about-page {
     overflow-y: auto;
 
     background-color: #f3efdf;
-    background-image: url("CSS Images/full red folder.webp");
+    background-image: url("full red folder.webp");
     background-position: center 12vh;
     background-size: 100% calc(100% - 8vh);
     background-repeat: no-repeat;
@@ -752,7 +752,7 @@ body.about-page {
     --folder-top: 12vh;
 
     background-color: #f3efdf;
-    background-image: url("CSS Images/full red folder.webp");
+    background-image: url("full red folder.webp");
     background-position: right var(--folder-top);
     background-size: 100% calc(100% - var(--folder-top));
     background-repeat: no-repeat;
@@ -866,7 +866,7 @@ body.readings-page {
     min-height: 150vh;
 
     background-color: #f3efdf;
-    background-image: url("CSS Images/full red folder.webp");
+    background-image: url("full red folder.webp");
     background-position: center 12vh;
     background-size: 100% calc(100% - 12vh);
     background-repeat: no-repeat;
@@ -971,19 +971,19 @@ body.readings-page {
 
 /* Different paper image for each reading popup */
 #reading1 .reading-paper {
-    background-image: url("CSS Images/response1.webp");
+    background-image: url("response1.webp");
 }
 
 #reading2 .reading-paper {
-    background-image: url("CSS Images/response2.webp");
+    background-image: url("response2.webp");
 }
 
 #reading3 .reading-paper {
-    background-image: url("CSS Images/response3.webp");
+    background-image: url("response3.webp");
 }
 
 #reading4 .reading-paper {
-    background-image: url("CSS Images/response4.webp");
+    background-image: url("response4.webp");
 }
 
 /* Scrollable inside the white paper */
